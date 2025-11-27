@@ -1,22 +1,96 @@
 """
-Fake News Classifier 
-25F AI Infrastructure and Arch. - 01
-#4 Sentiment Analysis // Azure [10%]
-Author: Alexander Sanchez
-Dataset: https://www.kaggle.com/datasets/clmentbisaillon/fake-and-real-news-dataset
+===============================================================================
+                FAKE NEWS DETECTION SYSTEM – PYTHON IMPLEMENTATION
+===============================================================================
+Course:        25F AI Infrastructure and Architecture – Section 01
+Project Type:  NLP / Machine Learning – Fake News Classification
+Assignment:    #4 Sentiment Analysis // Azure (10%)
+Student:       Alexander Sanchez
+Date:          Fall 2025
 
-Usage:
+Dataset:
+    Fake and Real News Dataset (Kaggle)
+    https://www.kaggle.com/datasets/clmentbisaillon/fake-and-real-news-dataset
 
-python fakenews_scanner.py
+--------------------------------------------------------------------------------
+PROJECT OVERVIEW
+--------------------------------------------------------------------------------
+This program implements a complete Fake News Detection System using supervised
+machine learning. The system classifies online news articles as REAL or FAKE
+based on text content. It includes automated data cleaning, TF-IDF vectorization,
+Logistic Regression training, model evaluation, report generation, visualization,
+and interactive CLI-based prediction.
 
-Description:
+--------------------------------------------------------------------------------
+KEY FEATURES
+--------------------------------------------------------------------------------
+1. Data Ingestion & Preprocessing
+   - Accepts multiple dataset formats (train/test CSV or Fake/True CSVs)
+   - Text cleaning (special characters, whitespace normalization, lowercasing)
+   - Automatic column detection (text, title, label)
 
-This CLI app generates the following reports
-1.classification_report.txt - Detailed metrics report
-2.confusion_matrix.png - Visual confusion matrix
-3.fake_news_model.pkl - Saved model file
-4.batch_predictions.txt - Batch prediction results
+2. Machine Learning Pipeline
+   - TF-IDF vectorization (max_features = 5000)
+   - Logistic Regression classifier (max_iter = 1000)
+   - Train/test split with evaluation metrics
+
+3. Evaluation & Analytics
+   - Accuracy, Precision, Recall, F1-Score
+   - Full classification_report
+   - Confusion matrix (numeric + plotted PNG)
+   - Detailed output saved to classification_report.txt
+
+4. Interactive CLI System
+   - Train new model
+   - Load saved model
+   - Analyze custom article text
+   - Batch analysis from file
+   - View performance summary
+   - Export predictions & reports
+
+5. Additional Enhancements
+   - Colored console output (colorama)
+   - Progress spinners for long tasks
+   - Safe exception handling
+   - Model persistence via pickle
+
+--------------------------------------------------------------------------------
+OUTPUT FILES GENERATED
+--------------------------------------------------------------------------------
+• classification_report.txt      → Performance summary + confusion matrix
+• confusion_matrix.png            → Visualization of predictions
+• fake_news_model.pkl             → Saved ML model + vectorizer
+• batch_predictions.txt           → Batch prediction results
+
+--------------------------------------------------------------------------------
+HOW TO RUN
+--------------------------------------------------------------------------------
+1. Place dataset CSV files in the same directory.
+2. Run the program:
+
+       python fakenews_scanner.py
+
+3. Follow on-screen menu options to:
+       - Train a model
+       - Load a model
+       - Test news text
+       - Generate reports
+       - Produce visualizations
+
+--------------------------------------------------------------------------------
+REQUIREMENTS
+--------------------------------------------------------------------------------
+Required Python Packages:
+    pandas, numpy, scikit-learn, matplotlib, wordcloud, colorama
+
+If missing, they will be automatically installed (when possible).
+
+--------------------------------------------------------------------------------
+
+
+===============================================================================
 """
+
 
 import pandas as pd
 import numpy as np
@@ -579,4 +653,5 @@ if __name__ == "__main__":
         print("\n\n Program interrupted. Goodbye!")
     except Exception as e:
         print(f"\n Fatal error: {str(e)}")
+
         print("Please report this issue if it persists.")
